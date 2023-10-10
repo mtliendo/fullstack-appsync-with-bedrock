@@ -2,22 +2,19 @@ import { ListTacoRecipesQuery, TacoRecipe } from '@/src/API'
 import { deleteTacoRecipe } from '@/src/graphql/mutations'
 import { listTacoRecipes } from '@/src/graphql/queries'
 import { GraphQLResult } from '@aws-amplify/api-graphql'
-import { withAuthenticator } from '@aws-amplify/ui-react'
+import { useAuthenticator } from '@aws-amplify/ui-react'
 import { API } from 'aws-amplify'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
-type HomePageProps = {
-	user: {}
-	signOut: () => {}
-}
-
-function Home(props: HomePageProps) {
+function Home() {
 	const [recipes, setRecipes] = useState<[] | TacoRecipe[]>([])
-
+	const { user } = useAuthenticator((context) => [context.user])
+	console.log({ user })
 	useEffect(() => {
 		const recipePromise = API.graphql({
 			query: listTacoRecipes,
+			authMode: user ? 'AMAZON_COGNITO_USER_POOLS' : 'AWS_IAM',
 		}) as Promise<GraphQLResult<ListTacoRecipesQuery>>
 
 		recipePromise.then((res) => {
@@ -26,13 +23,16 @@ function Home(props: HomePageProps) {
 
 			setRecipes(items.filter((item): item is TacoRecipe => Boolean(item)))
 		})
-	}, [])
+	}, [user])
 
-	const handleRecipeDelete = async (id: string) =>
-		await API.graphql({
-			query: deleteTacoRecipe,
-			variables: { input: { id } },
-		})
+	const handleRecipeDelete = async (id: string) => {
+		if (user) {
+			await API.graphql({
+				query: deleteTacoRecipe,
+				variables: { input: { id } },
+			})
+		}
+	}
 	return (
 		<>
 			<div className="hero min-h-screen bg-base-200">
@@ -72,4 +72,4 @@ function Home(props: HomePageProps) {
 	)
 }
 
-export default withAuthenticator(Home, { signUpAttributes: ['email'] })
+export default Home

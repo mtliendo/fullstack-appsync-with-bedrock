@@ -3,16 +3,11 @@ import { CreateTacoRecipeMutation, GenerateTacoRecipeQuery } from '@/src/API'
 import { createTacoRecipe } from '@/src/graphql/mutations'
 import { generateTacoRecipe } from '@/src/graphql/queries'
 import { GraphQLResult } from '@aws-amplify/api-graphql'
-import { withAuthenticator } from '@aws-amplify/ui-react'
+import { Authenticator, withAuthenticator } from '@aws-amplify/ui-react'
 import { API } from 'aws-amplify'
 import { useState } from 'react'
 
-type MyRecipesPageProps = {
-	user: {}
-	signOut: () => {}
-}
-
-function MyRecipes(props: MyRecipesPageProps) {
+function MyRecipes() {
 	const [title, setTitle] = useState('')
 	const [description, setDescription] = useState('')
 
@@ -64,56 +59,58 @@ function MyRecipes(props: MyRecipesPageProps) {
 	return (
 		<>
 			<Navbar />
-			<section className="flex justify-center">
-				<form
-					onSubmit={handleSubmit}
-					className="flex flex-col items-center max-w-lg"
-				>
-					<section>
-						<label htmlFor="recipe-title" className="label">
-							<span className="label-text">What is the recipe title?</span>
-						</label>
-						<input
-							id="recipe-title"
-							name="recipe-title"
-							type="text"
-							value={title}
-							onChange={(e) => setTitle(e.target.value)}
-							placeholder="Hawaiian Tacos"
-							className="input input-bordered input-accent w-full"
-						/>
-					</section>
-					<section className="mt-4">
-						<label htmlFor="recipe-description" className="label">
-							<span className="label-text">
-								What is the recipe description?
-							</span>
-						</label>
-						<textarea
-							id="recipe-description"
-							name="recipe-description"
-							value={description}
-							onChange={(e) => setDescription(e.target.value)}
-							placeholder="Start with corn tortilla..."
-							className="input input-bordered input-accent w-full h-48"
-						/>
-					</section>
-					<section className="flex flex-col w-full mt-4">
-						<button
-							type="button"
-							onClick={() => generateAIRecipe()}
-							className="btn btn-primary mb-4 "
-						>
-							Generate AI Recipe
-						</button>
-						<button type="submit" className="btn btn-accent">
-							submit
-						</button>
-					</section>
-				</form>
-			</section>
+			<Authenticator signUpAttributes={['email']}>
+				<section className="flex justify-center">
+					<form
+						onSubmit={handleSubmit}
+						className="flex flex-col items-center max-w-lg"
+					>
+						<section>
+							<label htmlFor="recipe-title" className="label">
+								<span className="label-text">What is the recipe title?</span>
+							</label>
+							<input
+								id="recipe-title"
+								name="recipe-title"
+								type="text"
+								value={title}
+								onChange={(e) => setTitle(e.target.value)}
+								placeholder="Hawaiian Tacos"
+								className="input input-bordered input-accent w-full"
+							/>
+						</section>
+						<section className="mt-4">
+							<label htmlFor="recipe-description" className="label">
+								<span className="label-text">
+									What is the recipe description?
+								</span>
+							</label>
+							<textarea
+								id="recipe-description"
+								name="recipe-description"
+								value={description}
+								onChange={(e) => setDescription(e.target.value)}
+								placeholder="Start with corn tortilla..."
+								className="input input-bordered input-accent w-full h-48"
+							/>
+						</section>
+						<section className="flex flex-col w-full mt-4">
+							<button
+								type="button"
+								onClick={() => generateAIRecipe()}
+								className="btn btn-primary mb-4 "
+							>
+								Generate AI Recipe
+							</button>
+							<button type="submit" className="btn btn-accent">
+								submit
+							</button>
+						</section>
+					</form>
+				</section>
+			</Authenticator>
 		</>
 	)
 }
 
-export default withAuthenticator(MyRecipes, { signUpAttributes: ['email'] })
+export default MyRecipes

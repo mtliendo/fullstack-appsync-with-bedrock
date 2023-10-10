@@ -1,5 +1,5 @@
 import '@/styles/globals.css'
-import { AmplifyProvider } from '@aws-amplify/ui-react'
+import { AmplifyProvider, Authenticator } from '@aws-amplify/ui-react'
 import '@aws-amplify/ui-react/styles.css'
 import { Amplify } from 'aws-amplify'
 import { config } from '@/aws-exports'
@@ -9,8 +9,8 @@ Amplify.configure(config)
 
 export default function App({ Component, pageProps }: AppProps) {
 	return (
-		<AmplifyProvider>
+		<Authenticator.Provider>
 			<Component {...pageProps} />
-		</AmplifyProvider>
+		</Authenticator.Provider>
 	)
 }
