@@ -16,7 +16,6 @@ type AmplifyGraphQLAPIProps = {
 	identityPoolId: string
 }
 
-// 2: Create your AppSync API
 export const createAmplifyGraphQLAPI = (
 	scope: Construct,
 	props: AmplifyGraphQLAPIProps
@@ -26,7 +25,6 @@ export const createAmplifyGraphQLAPI = (
 		definition: AmplifyGraphqlDefinition.fromFiles(
 			path.join(__dirname, 'schema.graphql')
 		),
-		//! Protecting my API with Amazon Cognito 😎
 		authorizationModes: {
 			defaultAuthorizationMode: 'AMAZON_COGNITO_USER_POOLS',
 			userPoolConfig: {
@@ -40,7 +38,6 @@ export const createAmplifyGraphQLAPI = (
 		},
 	})
 
-	// Step 3: Add Bedrock as an HTTP Datasource
 	const bedrockDataSource = api.addHttpDataSource(
 		'bedrockDS',
 		'https://bedrock-runtime.us-east-1.amazonaws.com',

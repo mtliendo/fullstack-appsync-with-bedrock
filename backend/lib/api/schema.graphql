@@ -1,6 +1,3 @@
-# Step 1: Create Your AppSync Schema
-
-# The L3 construct supports Amplify-style schema creation!
 type TacoRecipe
 	@model
 	@auth(
@@ -19,7 +16,6 @@ type BedRockTacoRecipe {
 	description: String!
 }
 
-# We can still create our own custom types!
 type Query {
 	generateTacoRecipe(prompt: String): String! @aws_cognito_user_pools
 }
