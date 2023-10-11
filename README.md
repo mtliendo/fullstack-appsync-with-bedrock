@@ -1,6 +1,7 @@
 # Fullstack AI on AWS
 
 ![ai on aws](./fullstack-ai-aws.png)
+👉 https://youtu.be/EEhgiHnnHXg 👈
 
 If you've ever wanted to complete guide to building your next application on AWS, this is the repo for you.
 
