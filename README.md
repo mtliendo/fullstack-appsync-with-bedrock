@@ -23,3 +23,22 @@ In addition, this comes with a frontend that uses [NextJS](https://nextjs.org/),
 This is completely built with TypeScript on both the NextJS side and the AWS CDK side.
 
 Checkout my YouTube channel for more content like this!
+
+## Note
+
+This project expects a file called `aws-exports.ts`. The Youtube video shows how to create this but essentially the following fields would need to be populated:
+
+```ts
+export const config = {
+	aws_project_region: '',
+	Auth: {
+		region: '',
+		userPoolId: '',
+		userPoolWebClientId: '',
+		identityPoolId: '',
+	},
+	aws_appsync_graphqlEndpoint: '',
+	aws_appsync_region: '',
+	aws_appsync_authenticationType: '',
+}
+```
