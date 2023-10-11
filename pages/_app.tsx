@@ -1,5 +1,5 @@
 import '@/styles/globals.css'
-import { AmplifyProvider, Authenticator } from '@aws-amplify/ui-react'
+import { Authenticator } from '@aws-amplify/ui-react'
 import '@aws-amplify/ui-react/styles.css'
 import { Amplify } from 'aws-amplify'
 import { config } from '@/aws-exports'
