@@ -12,8 +12,8 @@ This repo brings together [core AWS services that every app needs](https://youtu
 
 - AWS Cognito: Allows user signups, forgot password, and more
 - AWS AppSync: A managed GraphQL service that provides websockets out of the box
-- Amazon DynamoDB: Simple
-- Amazon Bedrock
+- Amazon DynamoDB: Database layer
+- Amazon Bedrock: AI LLM service
 
 All of these services are located in their own folder in the `backend` directory. They then come together in the `lib/backendStack.ts` file.
 
