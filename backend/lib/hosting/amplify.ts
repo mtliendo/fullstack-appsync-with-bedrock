@@ -104,5 +104,6 @@ export function createAmplifyHosting(
 		branchName: props.branch,
 	})
 
+	console.log('test')
 	return amplifyApp
 }
