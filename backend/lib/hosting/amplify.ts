@@ -50,7 +50,7 @@ export function createAmplifyHosting(
 			},
 		}
 	)
-
+	console.log('random commti')
 	const amplifyApp = new amplify.App(scope, `${props.appName}-hosting`, {
 		appName: `${props.appName}`,
 		role: amplifyDeployCDKRole,
