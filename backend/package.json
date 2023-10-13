@@ -10,7 +10,7 @@
 		"test": "jest",
 		"cdk": "cdk",
 		"deploy": "npx aws-cdk deploy --profile focus-otter-sandbox --outputs-file ../output.json",
-		"deploy:ci": "npx aws-cdk deploy --require-approval never --outputs-file ../output.json "
+		"deploy:ci": "npx aws-cdk deploy --require-approval never --outputs-file ../output.json"
 	},
 	"devDependencies": {
 		"@types/jest": "^29.5.1",
