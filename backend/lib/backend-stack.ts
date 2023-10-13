@@ -24,7 +24,7 @@ export class BackendStack extends cdk.Stack {
 		const amplifyHosting = createAmplifyHosting(this, {
 			account: this.account,
 			appName,
-			branch: 'main',
+			branch: 'dev',
 			ghOwner: 'mtliendo',
 			repo: 'fullstack-appsync-with-bedrock',
 			ghTokenName: 'github-token',
