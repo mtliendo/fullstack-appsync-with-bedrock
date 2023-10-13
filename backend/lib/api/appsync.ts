@@ -65,4 +65,6 @@ export const createAmplifyGraphQLAPI = (
 		code: Code.fromAsset(path.join(__dirname, 'generateTacoRecipe.js')),
 		runtime: FunctionRuntime.JS_1_0_0,
 	})
+
+	return api
 }

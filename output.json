@@ -1,0 +1,17 @@
+{
+  "BackendStack2": {
+    "awsAppsyncApiEndpoint": "https://4fxwbbatqzdv3iand5tobpzkwi.appsync-api.us-east-1.amazonaws.com/graphql",
+    "awsAppsyncApiId": "4ya2vthnavbnbbbhfjdka6rvh4",
+    "AppSyncAPIId": "4ya2vthnavbnbbbhfjdka6rvh4",
+    "amplifyApiModelSchemaS3Uri": "s3://backendstack2-tacorecipes2amplifycodegenassetsamp-7m3ky1tk57cj/model-schema.graphql",
+    "awsAppsyncAdditionalAuthenticationTypes": "AWS_IAM",
+    "awsAppsyncRegion": "us-east-1",
+    "UserPoolClientId": "3ddmitpub9vligpucid4ns2afn",
+    "awsAppsyncAuthenticationType": "AMAZON_COGNITO_USER_POOLS",
+    "UserPoolId": "us-east-1_DfEyeNkBj",
+    "IdentityPoolId": "us-east-1:9201bc8a-45ca-4eca-b0cb-e133ebb76134",
+    "AppSyncAPIEndpoint": "https://4fxwbbatqzdv3iand5tobpzkwi.appsync-api.us-east-1.amazonaws.com/graphql",
+    "AppSyncAuthType": "AMAZON_COGNITO_USER_POOLS",
+    "AppRegion": "us-east-1"
+  }
+}
